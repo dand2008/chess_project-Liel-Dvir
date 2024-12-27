@@ -1,0 +1,91 @@
+CHESS GAME PROJECT CHECKLIST
+============================
+
+1. CLASSES IMPLEMENTATION
+--------------------------
+   a. Engine Class:
+      [X] Implement `Engine(const char*)`
+      [X] Implement `getCode(string)` method
+      [X] Manage `_currPlayer`
+
+   b. Board Class:
+      [X] Implement `Board(const char*)`
+      [X] Implement `getPiece(int, int): Square`
+      [X] Implement `displayBoard()`
+      [X] Implement `Piece (&getBoard())[8][8];`
+
+   c. Piece Class:
+      [X] Implement `Piece(char, int, int)`
+      [X] Implement `display()` method
+      [X] Implement `setType()`
+      [X] Implement `getType()`
+      [X] Implement `getColor()`
+      [X] Implement `setColor()`
+      [X] Implement `setPos(int, int)`
+      [X] Implement `getX()`
+      [X] Implement `getY()`
+      [ ] Implement `checkMove()` as a virtual method
+      [X] Overload `operator==(Piece)`
+
+   d. Derived Classes:
+      [ ] King Class:
+          [ ] Inherit from `Piece`
+          [ ] Implement `checkMove()` for King
+      [ ] Queen Class:
+          [ ] Inherit from `Piece`
+          [ ] Implement `checkMove()` for Queen
+      [ ] Bishop Class:
+          [ ] Inherit from `Piece`
+          [ ] Implement `checkMove()` for Bishop
+      [ ] Knight Class:
+          [ ] Inherit from `Piece`
+          [ ] Implement `checkMove()` for Knight
+      [X] Rook Class:
+          [X] Inherit from `Piece`
+          [X] Implement `checkMove()` for Rook
+      [X] Pawn Class:
+          [X] Inherit from `Piece`
+          [X] Implement `checkMove()` for Pawn
+
+2. UTILITY CLASS
+-----------------
+   a. Utils:
+      [X] Implement `fetchMove(string): int*`
+      [X] Implement `movePiece(Piece&, Piece&, char&)`
+
+3. CORE GAME FEATURES
+----------------------
+      [X] Initialize the chess board with correct piece positions
+      [ ] Implement movement rules for each piece
+      [not done] Validate moves using `checkMove()`
+      [ ] Detect check, checkmate, and stalemate conditions
+      [X] Handle turns and player switching
+
+4. USER INTERFACE
+------------------
+      [ ] Design the console-based board display (`displayBoard()`)
+      [ ] Handle user input for moves
+      [ ] Provide meaningful error messages for invalid moves
+
+5. TESTING
+----------
+      [ ] Unit test for each class and its methods
+      [ ] Test movement rules for all pieces
+      [ ] Test special moves:
+            [ ] Castling
+            [ ] En passant
+            [ ] Pawn promotion
+      [ ] Test edge cases and invalid inputs
+      [ ] Test check and checkmate scenarios
+
+6. DOCUMENTATION
+-----------------
+      [ ] Provide a README file with:
+            [ ] Project description
+            [ ] Instructions for running the program
+      [ ] Include code comments explaining key logic
+
+7. OPTIMIZATION
+----------------
+      [ ] Optimize performance for move validation
+      [ ] Ensure scalability and maintainability of the code

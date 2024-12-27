@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Rook.h"
+#include "Pawn.h"
 
 Engine::Engine(const char* board)
 	: _board(board)
@@ -79,16 +80,34 @@ char* Engine::getCode(string move)
 	return code;
 }
 
+
+// Improved checkPieceMove function
 bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
 {
-	char piece = tolower(source.getType());
-	if (piece == 'r')
-	{
-		Rook r;
-		if (!r.checkMove(board, source, destination))
-		{
-			std::cout << "ERROR: Invalid move for a Rook!\n";
-			return 0;
-		}
-	}
+    char piece = tolower(source.getType());
+    if (piece == 'r')
+    {
+        Rook r;
+        if (!r.checkMove(board, source, destination))
+        {
+            std::cout << "ERROR: Invalid move for a Rook!\n";
+            return false;
+        }
+    }
+    else if (source.getType() == 'p' || source.getType() == 'P')
+    {
+        Pawn p;
+        if (p.checkMove(board, source, destination) == false)
+        {
+            std::cout << "ERROR: Invalid move for a Pawn!\n";
+            return false;
+        }
+    }
+    // Add checks for other piece types here (e.g., Knight, Bishop, Queen, King)
+    else
+    {
+        std::cout << "ERROR: Unsupported piece type!\n";
+        return false;
+    }
+    return true; // Ensure a return value on all paths
 }
