@@ -21,6 +21,7 @@ int main()
 	{
 		system("cls");
 		e.getCode(input);
+		e.displayBoard();
 
 		std::cout << "\n" << (e.getCurrPlayer() == 'w' ? "White" : "Black") << " to move." << std::endl;
 		std::cout << "Enter move (e.g. e2e4): ";
