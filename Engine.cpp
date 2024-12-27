@@ -6,7 +6,7 @@ Engine::Engine(const char* board)
 	: _board(board)
 {
 	_board.displayBoard();
-	_currentPlayer = board[((string)board).length() - 1] == '0' ? 'w' : 'b';
+	_currentPlayer = board[((string)board).length() - 1] == '0' ? WHITE : BLACK;
 }
 
 char Engine::getCurrPlayer() const
@@ -23,11 +23,9 @@ char* Engine::getCode(string move)
 {
 	static char code[2] = { 0 };
 	int* coords = nullptr;
+	
 	// get source and destination from the string
-	try
-	{
-		coords = Utils::fetchMove(move);
-	}
+	try { coords = Utils::fetchMove(move); }
 	catch (const std::string& e)
 	{
 		std::cout << e;
@@ -38,8 +36,6 @@ char* Engine::getCode(string move)
 
 	Piece& source = _board.getPiece(coords[0], coords[1]);
 	Piece& destination = _board.getPiece(coords[2], coords[3]);
-
-	//std::cout << source.getType() << std::endl;
 
 	/* The move validity check order is as follows:
 	*  1. Check if move string is legit
@@ -59,7 +55,8 @@ char* Engine::getCode(string move)
 		code[0] = '5';
 	}
 	// check if the source piece belongs to the current player
-	else if (!(_currentPlayer == 'w' && source.getColor() == 'w') && !(_currentPlayer == 'b' && source.getColor() == 'b'))
+	else if (!(_currentPlayer == WHITE && source.getColor() == WHITE) &&
+			 !(_currentPlayer == BLACK && source.getColor() == BLACK))
 	{
 		std::cout << "ERROR: Not your piece!\n";
 		code[0] = '2';
@@ -71,7 +68,8 @@ char* Engine::getCode(string move)
 		code[0] = '7';
 	}
 	// check if the piece lands on the any of the current player's pieces
-	else if ((_currentPlayer == 'w' && destination.getColor() == 'w') || (_currentPlayer == 'b' && destination.getColor() == 'b'))
+	else if ((_currentPlayer == WHITE && destination.getColor() == WHITE) ||
+			 (_currentPlayer == BLACK && destination.getColor() == BLACK))
 	{
 		std::cout << "ERROR: Destination square cannot be your piece!\n";
 		code[0] = '3';
@@ -112,7 +110,6 @@ bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
         Pawn p;
         if (!p.checkMove(board, source, destination))
 	    {
-			Pawn p;
 			std::cout << "ERROR: Invalid move for a Pawn!\n";
 			return false;
 		}
