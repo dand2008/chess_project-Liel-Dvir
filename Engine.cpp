@@ -111,10 +111,11 @@ bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
     {
         Pawn p;
         if (!p.checkMove(board, source, destination))
-        {
-            std::cout << "ERROR: Invalid move for a Pawn!\n";
-            return false;
-        }
+	    {
+			Pawn p;
+			std::cout << "ERROR: Invalid move for a Pawn!\n";
+			return false;
+		}
     }
     // Add checks for other piece types here (e.g., Knight, Bishop, Queen, King)
     else
