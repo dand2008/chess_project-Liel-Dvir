@@ -5,7 +5,6 @@ using std::string;
 class Utils
 {
 public:
-	
 	static int* fetchMove(string data)
 	{
 		int* coords = new int[4];
@@ -18,5 +17,15 @@ public:
 		coords[2] = destinationX;
 		coords[3] = destinationY;
 		return coords;
+	}
+	static void movePiece(Piece& source, Piece& destination, char& currentPlayer)
+	{
+		destination.setType(source.getType());
+		destination.setColor(source.getColor());
+
+		source.setType('#');
+		source.setColor('/');
+
+		currentPlayer = currentPlayer == 'w' ? 'b' : 'w';
 	}
 };

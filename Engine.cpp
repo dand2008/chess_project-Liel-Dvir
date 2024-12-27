@@ -56,13 +56,7 @@ char* Engine::getCode(string move)
 		Rook r;
 		if (r.checkMove(_board.getBoard(), source, destination))
 		{
-			destination.setType(source.getType());
-			destination.setColor(source.getColor());
-
-			source.setType('#');
-			source.setColor('/');
-
-			_currentPlayer = _currentPlayer == 'w' ? 'b' : 'w';
+			Utils::movePiece(source, destination, _currentPlayer);
 			code[0] = '0';
 		}
 		else
@@ -72,13 +66,7 @@ char* Engine::getCode(string move)
 	}
 	else
 	{
-		destination.setType(source.getType());
-		destination.setColor(source.getColor());
-
-		source.setType('#');
-		source.setColor('/');
-
-		_currentPlayer = _currentPlayer == 'w' ? 'b' : 'w';
+		Utils::movePiece(source, destination, _currentPlayer);
 		code[0] = '0';
 	}
 	_board.displayBoard();
