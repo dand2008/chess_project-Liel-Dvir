@@ -50,27 +50,45 @@ char* Engine::getCode(string move)
 		std::cout << "ERROR: Destination square cannot be your piece!\n";
 		code[0] = '3';
 	}
-	// check piece move validity
-	else if (tolower(source.getType()) == 'r')
+	//check piece move validity
+	//else if (tolower(source.getType()) == 'r')
+	//{
+	//	Rook r;
+	//	if (r.checkMove(_board.getBoard(), source, destination))
+	//	{
+	//		Utils::movePiece(source, destination, _currentPlayer);
+	//		code[0] = '0';
+	//	}
+	//	else
+	//	{
+	//		std::cout << "ERROR: Invalid move for a Rook!\n";
+	//	}
+	//}
+	else if (!checkPieceMove(_board.getBoard(), source, destination))
 	{
-		Rook r;
-		if (r.checkMove(_board.getBoard(), source, destination))
-		{
-			Utils::movePiece(source, destination, _currentPlayer);
-			code[0] = '0';
-		}
-		else
-		{
-			std::cout << "ERROR: Invalid move for a Rook!\n";
-		}
+		code[0] = '6';
 	}
 	else
 	{
 		Utils::movePiece(source, destination, _currentPlayer);
 		code[0] = '0';
 	}
-	_board.displayBoard();
 
+	_board.displayBoard();
 	delete[] coords;
 	return code;
+}
+
+bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
+{
+	char piece = tolower(source.getType());
+	if (piece == 'r')
+	{
+		Rook r;
+		if (!r.checkMove(board, source, destination))
+		{
+			std::cout << "ERROR: Invalid move for a Rook!\n";
+			return 0;
+		}
+	}
 }
