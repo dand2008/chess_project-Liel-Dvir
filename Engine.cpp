@@ -38,7 +38,6 @@ char* Engine::getCode(string move)
 
 	Piece& source = _board.getPiece(coords[1], coords[0]);
 	Piece& destination = _board.getPiece(coords[3], coords[2]);
-	std::cout << source.getType() << ", " << destination.getType();
 
 	/* The move validity check order is as follows:
 	*  1. Check if move string is legit
