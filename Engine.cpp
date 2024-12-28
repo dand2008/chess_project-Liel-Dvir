@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include "Rook.h"
 #include "Pawn.h"
+#include "Bishop.h"
+#include "Queen.h"
 
 Engine::Engine(const char* board)
 	: _board(board)
@@ -34,8 +36,9 @@ char* Engine::getCode(string move)
 		return code;
 	}
 
-	Piece& source = _board.getPiece(coords[0], coords[1]);
-	Piece& destination = _board.getPiece(coords[2], coords[3]);
+	Piece& source = _board.getPiece(coords[1], coords[0]);
+	Piece& destination = _board.getPiece(coords[3], coords[2]);
+	std::cout << source.getType() << ", " << destination.getType();
 
 	/* The move validity check order is as follows:
 	*  1. Check if move string is legit
@@ -114,6 +117,24 @@ bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
 			return false;
 		}
     }
+	else if (piece == 'b')
+	{
+		Bishop b;
+		if (!b.checkMove(board, source, destination))
+		{
+			std::cout << "ERROR: Invalid move for a Bishop!\n";
+			return false;
+		}
+	}
+	else if (piece == 'q')
+	{
+		Queen q;
+		if (!q.checkMove(board, source, destination))
+		{
+			std::cout << "ERROR: Invalid move for a Queen!\n";
+			return false;
+		}
+	}
     // Add checks for other piece types here (e.g., Knight, Bishop, Queen, King)
     else
     {
