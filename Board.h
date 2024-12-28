@@ -16,6 +16,7 @@ class Board
 {
 public:
 	Board(const char* board);
+	~Board();
 	Piece& getPiece(int row, int col);
 	void displayBoard() const;
 	Piece* (&getBoard())[8][8];

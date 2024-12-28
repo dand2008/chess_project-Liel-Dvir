@@ -17,7 +17,7 @@ Board::Board(const char* board)
             case 'p': p = new Pawn(pieceType, i, j); break;
             case 'q': p = new Queen(pieceType, i, j); break;
             case 'r': p = new Rook(pieceType, i, j); break;
-            default: p = new nullPiece; break; // Default to a generic piece if type is unknown
+            default: p = new nullPiece(pieceType, i, j); break; // Default to a generic piece if type is unknown
             }
 			_board[i][j] = p;
 			ptr++;
@@ -25,9 +25,19 @@ Board::Board(const char* board)
 	}
 }
 
+Board::~Board()
+{
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 8; j++)
+        {
+            delete _board[i][j];
+        }
+    }
+}
 Piece& Board::getPiece(int row, int col)
 {
-    return (*_board)[row][col];
+    return *(_board[row][col]);
 }
 
 void Board::displayBoard() const {
