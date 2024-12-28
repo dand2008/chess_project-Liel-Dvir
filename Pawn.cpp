@@ -18,10 +18,10 @@ bool Pawn::checkMove(Piece board[8][8], Piece source, Piece destination) const
     int dx = destination.getX() - source.getX();
     int dy = destination.getY() - source.getY();
 
-    cout << "Source: (" << source.getX() << ", " << source.getY() << ")" << endl;
-    cout << "Destination: (" << destination.getX() << ", " << destination.getY() << ")" << endl;
-    cout << "dx: " << dx << ", dy: " << dy << ", direction: " << direction << endl;
-    cout << "Destination type: " << board[destination.getY()][destination.getX()].getType() << endl;
+    //cout << "Source: (" << source.getX() << ", " << source.getY() << ")" << endl;
+    //cout << "Destination: (" << destination.getX() << ", " << destination.getY() << ")" << endl;
+    //cout << "dx: " << dx << ", dy: " << dy << ", direction: " << direction << endl;
+    //cout << "Destination type: " << board[destination.getY()][destination.getX()].getType() << endl;
     
     // Check if the move is out of bounds
     if (destination.getX() < 0 || destination.getX() >= 8 || destination.getY() < 0 || destination.getY() >= 8) {
