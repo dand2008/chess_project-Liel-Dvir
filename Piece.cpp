@@ -3,18 +3,18 @@
 Piece::Piece(char p, int row, int col)
 	: _row(row), _col(col)
 {
-	_color = isupper(p) ? 'w' : (islower(p) ? 'b' : '/');
+	_color = isupper(p) ? WHITE : (islower(p) ? BLACK : EMPTY);
 	_type = p;
 }
 
 Piece::Piece()
+	: _type('#'), _color('#'), _row(0), _col(0)
 {
-
 }
 
 void Piece::display() const
 {
-	if (_type == '#')
+	if (_type == EMPTY)
 	{
 		std::cout << " ";
 	}
@@ -52,12 +52,6 @@ int Piece::getX() const
 int Piece::getY() const
 {
 	return _row;
-}
-
-void Piece::setPos(int x, int y)
-{
-	_row = x;
-	_col = y;
 }
 
 bool Piece::operator==(Piece other) const

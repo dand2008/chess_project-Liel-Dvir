@@ -8,8 +8,6 @@ Board::Board(const char* board)
 		for (int j = 0; j < 8; j++)
 		{
             Piece p(*ptr, i, j);
-            p.setType(*ptr);
-            p.setPos(i, j);
 			_board[i][j] = p;
 			ptr++;
 		}
