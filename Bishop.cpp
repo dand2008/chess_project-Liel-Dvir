@@ -31,5 +31,5 @@ bool Bishop::checkMove(Piece* board[8][8], Piece* source, Piece* destination) co
         currentY += stepY;
     }
 
-    return false;
+    return true;
 }
