@@ -31,12 +31,12 @@ CHESS GAME PROJECT CHECKLIST
       [ ] King Class:
           [ ] Inherit from `Piece`
           [ ] Implement `checkMove()` for King
-      [ ] Queen Class:
-          [ ] Inherit from `Piece`
-          [ ] Implement `checkMove()` for Queen
-      [ ] Bishop Class:
-          [ ] Inherit from `Piece`
-          [ ] Implement `checkMove()` for Bishop
+      [X] Queen Class:
+          [X] Inherit from `Piece`
+          [X] Implement `checkMove()` for Queen
+      [X] Bishop Class:
+          [X] Inherit from `Piece`
+          [X] Implement `checkMove()` for Bishop
       [ ] Knight Class:
           [ ] Inherit from `Piece`
           [ ] Implement `checkMove()` for Knight
