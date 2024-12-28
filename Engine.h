@@ -5,7 +5,6 @@
 #include "Board.h"
 #include "Utils.h"
 
-#define EMPTY '#'
 using std::string;
 
 class Engine

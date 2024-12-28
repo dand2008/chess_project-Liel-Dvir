@@ -3,6 +3,7 @@
 #include "Pawn.h"
 #include "Bishop.h"
 #include "Queen.h"
+#include "Knight.h"
 
 Engine::Engine(const char* board)
 	: _board(board)
@@ -134,7 +135,16 @@ bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
 			return false;
 		}
 	}
-    // Add checks for other piece types here (e.g., Knight, Bishop, Queen, King)
+	else if (piece == 'n')
+	{
+		Knight n;
+		if (!n.checkMove(board, source, destination))
+		{
+			std::cout << "ERROR: Invalid move for a Knight!\n";
+			return false;
+		}
+	}
+    // Add checks for other piece types here (King)
     else
     {
         std::cout << "ERROR: Unsupported piece type!\n";
