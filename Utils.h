@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Piece.h"
 using std::string;
 
 class Utils
@@ -10,10 +11,10 @@ public:
 		if (data.length() == 4)
 		{
 			int* coords = new int[4];
-			int sourceX = 8 - (data[1] - '0');
-			int sourceY = data[0] - 'a';
-			int destinationX = 8 - (data[3] - '0');
-			int destinationY = data[2] - 'a';
+			int sourceX = data[0] - 'a';
+			int sourceY = 8 - (data[1] - '0');
+			int destinationX = data[2] - 'a';
+			int destinationY = 8 - (data[3] - '0');
 			coords[0] = sourceX;
 			coords[1] = sourceY;
 			coords[2] = destinationX;
@@ -30,9 +31,9 @@ public:
 		destination.setType(source.getType());
 		destination.setColor(source.getColor());
 
-		source.setType('#');
-		source.setColor('/');
+		source.setType(EMPTY);
+		source.setColor(EMPTY);
 
-		currentPlayer = currentPlayer == 'w' ? 'b' : 'w';
+		currentPlayer = currentPlayer == WHITE ? BLACK : WHITE;
 	}
 };
