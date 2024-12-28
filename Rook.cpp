@@ -13,7 +13,7 @@ bool Rook::checkMove(Piece board[8][8], Piece source, Piece destination) const
 
 		for (int i = minY + 1; i < maxY; i++)
 		{
-			if (board[i][source.getX()].getType() != '#')
+			if (board[i][source.getX()].getType() != EMPTY)
 			{
 				return 0;
 			}
@@ -31,7 +31,7 @@ bool Rook::checkMove(Piece board[8][8], Piece source, Piece destination) const
 
 		for (int i = minX + 1; i < maxX; i++)
 		{
-			if (board[source.getY()][i].getType() != '#')
+			if (board[source.getY()][i].getType() != EMPTY)
 			{
 				return 0;
 			}
