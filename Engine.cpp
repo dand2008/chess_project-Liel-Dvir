@@ -4,6 +4,7 @@
 #include "Bishop.h"
 #include "Queen.h"
 #include "Knight.h"
+#include "King.h"
 
 Engine::Engine(const char* board)
 	: _board(board)
@@ -54,27 +55,23 @@ char* Engine::getCode(string move)
 		move[2] < 'a' || move[2] > 'h' ||
 		move[3] < '1' || move[3] > '8')
 	{
-		std::cout << "ERROR: Invalid input!\n";
 		code[0] = '5';
 	}
 	// check if the source piece belongs to the current player
 	else if (!(_currentPlayer == WHITE && source.getColor() == WHITE) &&
 			 !(_currentPlayer == BLACK && source.getColor() == BLACK))
 	{
-		std::cout << "ERROR: Not your piece!\n";
 		code[0] = '2';
 	}
 	// check if the destination is the same as the source
 	else if (source == destination)
 	{
-		std::cout << "ERROR: Source and Destination squares are the same!\n";
 		code[0] = '7';
 	}
 	// check if the piece lands on the any of the current player's pieces
 	else if ((_currentPlayer == WHITE && destination.getColor() == WHITE) ||
 			 (_currentPlayer == BLACK && destination.getColor() == BLACK))
 	{
-		std::cout << "ERROR: Destination square cannot be your piece!\n";
 		code[0] = '3';
 	}
 
@@ -141,6 +138,15 @@ bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
 		if (!n.checkMove(board, source, destination))
 		{
 			std::cout << "ERROR: Invalid move for a Knight!\n";
+			return false;
+		}
+	}
+	else if (piece == 'k')
+	{
+		King k;
+		if (!k.checkMove(board, source, destination))
+		{
+			std::cout << "ERROR: Invalid move for a King!\n";
 			return false;
 		}
 	}

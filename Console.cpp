@@ -20,8 +20,26 @@ int main()
 	while (input != "quit")
 	{
 		system("cls");
-		e.getCode(input);
+		char *code = e.getCode(input);
 		e.displayBoard();
+		switch (code[0])
+		{
+		case '2':
+			std::cout << "ERROR: Not your piece!\n";
+			break;
+		case '3':
+			std::cout << "ERROR: Destination square cannot be your piece!\n";
+			break;
+		case '5':
+			std::cout << "ERROR: Invalid input!\n";
+			break;
+		case '6':
+			break;
+		case '7':
+			std::cout << "ERROR: Source and Destination squares are the same!\n";
+			break;
+
+		}
 
 		std::cout << "\n" << (e.getCurrPlayer() == 'w' ? "White" : "Black") << " to move." << std::endl;
 		std::cout << "Enter move (e.g. e2e4): ";
