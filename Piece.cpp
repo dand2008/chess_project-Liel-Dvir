@@ -54,7 +54,7 @@ int Piece::getY() const
 	return _row;
 }
 
-bool Piece::operator==(Piece other) const
-{
-	return (_row == other._row && _col == other._col);
-}
+//bool Piece::operator==(Piece other) const
+//{
+//	return (_row == other._row && _col == other._col);
+//}
