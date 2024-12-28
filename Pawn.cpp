@@ -13,20 +13,10 @@ bool Pawn::checkMove(Piece* board[8][8], Piece* source, Piece* destination) cons
     int destinationY = destination->getY();
     // Determine the pawn's movement direction
     int direction = (source->getColor() == 'w') ? -1 : (source->getColor() == 'b') ? 1 : 0;
-    if (direction == 0) {
-        cout << "Invalid pawn type!" << endl;
-        return false;
-    }
 
     // Calculate the difference in positions
     int dx = destinationX - sourceX;
     int dy = destinationY - sourceY;
-
-    // Check if the move is out of bounds
-    if (destinationX < 0 || destinationX >= 8 || destinationY < 0 || destinationY >= 8) {
-        cout << "Move is out of bounds!" << endl;
-        return false;
-    }
 
     // Forward move (1 step)
     if (dx == 0 && dy == direction && board[destinationY][destinationX]->getType() == EMPTY) {
