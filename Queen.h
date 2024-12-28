@@ -3,9 +3,9 @@
 #include "Bishop.h"
 #include "Rook.h"
 
-class Queen : public Piece, public Bishop, public Rook
+class Queen : public Bishop, public Rook
 {
 public:
-	using Piece::Piece;
+	Queen(char p, int row, int col);
 	bool checkMove(Piece* board[8][8], Piece* source, Piece* destination) const override;
 };

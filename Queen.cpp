@@ -1,5 +1,10 @@
 #include "Queen.h"
 
+Queen::Queen(char p, int row, int col)
+	: Piece(p, row, col), Bishop(p, row, col), Rook(p, row, col)
+{
+}
+
 bool Queen::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
 {
 	if (Bishop::checkMove(board, source, destination) ||
