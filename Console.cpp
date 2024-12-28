@@ -4,14 +4,13 @@ using std::cout;
 using std::endl;
 using std::string;
 
-
 int main()
 {
-	char msgToGraphics[1024];
+	char setup[66];
 	string input;
 
-	strcpy_s(msgToGraphics, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0");
-	Engine e(msgToGraphics);
+	strcpy_s(setup, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0");
+	Engine e(setup);
 
 	std::cout << "\n" << (e.getCurrPlayer() == 'w' ? "White" : "Black") << " to move." << std::endl;
 	std::cout << "Enter move (e.g. e2e4): ";
@@ -34,6 +33,7 @@ int main()
 			std::cout << "ERROR: Invalid input!\n";
 			break;
 		case '6':
+			std::cout << "ERROR: Invalid move: Path obstructed or illegal move for piece.\n";
 			break;
 		case '7':
 			std::cout << "ERROR: Source and Destination squares are the same!\n";
