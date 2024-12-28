@@ -54,7 +54,13 @@ int Piece::getY() const
 	return _row;
 }
 
-//bool Piece::operator==(Piece other) const
-//{
-//	return (_row == other._row && _col == other._col);
-//}
+bool Piece::checkMove(Piece* board[8][8], Piece* destination) const
+{
+	std::cout << "ASDASDAS";
+	return 0;
+}
+
+bool Piece::operator==(Piece other) const
+{
+	return (_row == other._row && _col == other._col);
+}
