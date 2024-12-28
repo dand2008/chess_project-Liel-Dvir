@@ -12,6 +12,7 @@ class Piece
 public:
 	Piece();
 	Piece(char p, int row, int col);
+	virtual ~Piece() = default;
 	virtual void display() const;
 
 	char getType() const;
