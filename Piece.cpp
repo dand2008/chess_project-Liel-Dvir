@@ -8,7 +8,7 @@ Piece::Piece(char p, int row, int col)
 }
 
 Piece::Piece()
-	: _type('#'), _color('#'), _row(0), _col(0)
+	: _type(EMPTY), _color(EMPTY), _row(0), _col(0)
 {
 }
 
