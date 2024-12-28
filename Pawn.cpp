@@ -8,7 +8,7 @@ using namespace std;
 bool Pawn::checkMove(Piece board[8][8], Piece source, Piece destination) const
 {
     // Determine the pawn's movement direction
-    int direction = (source.getType() == 'P') ? -1 : (source.getType() == 'p') ? 1 : 0;
+    int direction = (source.getColor() == 'w') ? -1 : (source.getColor() == 'b') ? 1 : 0;
     if (direction == 0) {
         cout << "Invalid pawn type!" << endl;
         return false;
@@ -45,7 +45,7 @@ bool Pawn::checkMove(Piece board[8][8], Piece source, Piece destination) const
     // Diagonal capture
     if ((dx == 1 || dx == -1) && dy == direction &&
         board[destination.getY()][destination.getX()].getType() != EMPTY &&
-        board[destination.getY()][destination.getX()].getType() != source.getType()) {
+        board[destination.getY()][destination.getX()].getColor() != source.getColor()) {
         return true;
     }
 
