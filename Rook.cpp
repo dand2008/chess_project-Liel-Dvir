@@ -2,32 +2,26 @@
 
 bool Rook::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
 {
-	int sourceX = source->getX();
-	int sourceY = source->getY();
-	int destinationX = destination->getX();
-	int destinationY = destination->getY();
-	if (sourceX == destinationX)
+	int startX = std::min(source->getX(), destination->getX());
+	int endX = std::max(source->getX(), destination->getX());
+	int startY = std::min(source->getY(), destination->getY());
+	int endY = std::max(source->getY(), destination->getY());
+	if (source->getX() == destination->getX())
 	{
-		int start = std::min(sourceY, destinationY);
-		int end = std::max(sourceY, destinationY);
-
-		for (int y = start; y < end; ++y)
+		for (int y = startY + 1; y < endY; y++)
 		{
-			if (board[y][sourceX]->getType() != EMPTY)
+			if (board[y][source->getX()]->getType() != EMPTY)
 			{
 				return false;
 			}
 		}
 		return true;
 	}
-	if (sourceY == destinationY)
+	if (source->getY() == destination->getY())
 	{
-		int start = std::min(sourceX, destinationX);
-		int end = std::max(sourceX, destinationX);
-
-		for (int x = start; x < end; ++x)
+		for (int x = startX + 1; x < endX; x++)
 		{
-			if (board[sourceY][x]->getType() != EMPTY)
+			if (board[source->getY()][x]->getType() != EMPTY)
 			{
 				return false;
 			}

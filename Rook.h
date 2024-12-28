@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Piece.h"
 
-class Rook : public Piece
+class Rook : virtual public Piece
 {
 public:
 	using Piece::Piece;
