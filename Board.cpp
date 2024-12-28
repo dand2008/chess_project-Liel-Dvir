@@ -7,7 +7,18 @@ Board::Board(const char* board)
 	{
 		for (int j = 0; j < 8; j++)
 		{
-            Piece p(*ptr, i, j);
+            char pieceType = *ptr;
+            Piece* p = nullptr;
+            switch (tolower(pieceType))
+            {
+            case 'b': p = new Bishop(pieceType, i, j); break;
+            case 'k': p = new King(pieceType, i, j); break;
+            case 'n': p = new Knight(pieceType, i, j); break;
+            case 'p': p = new Pawn(pieceType, i, j); break;
+            case 'q': p = new Queen(pieceType, i, j); break;
+            case 'r': p = new Rook(pieceType, i, j); break;
+            default: p = new nullPiece; break; // Default to a generic piece if type is unknown
+            }
 			_board[i][j] = p;
 			ptr++;
 		}
@@ -16,7 +27,7 @@ Board::Board(const char* board)
 
 Piece& Board::getPiece(int row, int col)
 {
-    return _board[row][col];
+    return (*_board)[row][col];
 }
 
 void Board::displayBoard() const {
@@ -26,7 +37,7 @@ void Board::displayBoard() const {
     for (int i = 0; i < 8; i++) {
         std::cout << (8 - i) << " | "; // Row label
         for (int j = 0; j < 8; j++) {
-            _board[i][j].display();   // Display each square
+            _board[i][j]->display();   // Display each square
             std::cout << " | ";      // Cell separator
         }
         std::cout << (8 - i) << "\n"; // Close row with label
@@ -36,7 +47,7 @@ void Board::displayBoard() const {
     std::cout << "    a   b   c   d   e   f   g   h\n"; // Column labels again
 }
 
-Piece(&Board::getBoard())[8][8]
+Piece*(&Board::getBoard())[8][8]
 {
     return _board;
 }

@@ -76,7 +76,7 @@ char* Engine::getCode(string move)
 	}
 
 	// After all source/destination checks, check if the piece can move like wanted
-	else if (!checkPieceMove(_board.getBoard(), source, destination))
+	else if (!checkPieceMove(_board.getBoard(), &source, &destination))
 	{
 		code[0] = '6';
 	}
@@ -93,68 +93,7 @@ char* Engine::getCode(string move)
 }
 
 // Improved checkPieceMove function
-bool Engine::checkPieceMove(Piece board[8][8], Piece source, Piece destination)
+bool Engine::checkPieceMove(Piece* board[8][8], Piece* source, Piece* destination)
 {
-    char piece = tolower(source.getType());
-    if (piece == 'r')
-    {
-        Rook r;
-        if (!r.checkMove(board, source, destination))
-        {
-            std::cout << "ERROR: Invalid move for a Rook!\n";
-            return false;
-        }
-    }
-    else if (piece == 'p')
-    {
-        Pawn p;
-        if (!p.checkMove(board, source, destination))
-	    {
-			std::cout << "ERROR: Invalid move for a Pawn!\n";
-			return false;
-		}
-    }
-	else if (piece == 'b')
-	{
-		Bishop b;
-		if (!b.checkMove(board, source, destination))
-		{
-			std::cout << "ERROR: Invalid move for a Bishop!\n";
-			return false;
-		}
-	}
-	else if (piece == 'q')
-	{
-		Queen q;
-		if (!q.checkMove(board, source, destination))
-		{
-			std::cout << "ERROR: Invalid move for a Queen!\n";
-			return false;
-		}
-	}
-	else if (piece == 'n')
-	{
-		Knight n;
-		if (!n.checkMove(board, source, destination))
-		{
-			std::cout << "ERROR: Invalid move for a Knight!\n";
-			return false;
-		}
-	}
-	else if (piece == 'k')
-	{
-		King k;
-		if (!k.checkMove(board, source, destination))
-		{
-			std::cout << "ERROR: Invalid move for a King!\n";
-			return false;
-		}
-	}
-    // Add checks for other piece types here (King)
-    else
-    {
-        std::cout << "ERROR: Unsupported piece type!\n";
-        return false;
-    }
-    return true; // Ensure a return value on all paths
+	return source->checkMove(board, source, destination);
 }

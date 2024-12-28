@@ -12,7 +12,7 @@ class Piece
 public:
 	Piece();
 	Piece(char p, int row, int col);
-	void display() const;
+	virtual void display() const;
 
 	char getType() const;
 	void setType(char type);
@@ -23,8 +23,10 @@ public:
 	int getX() const;
 	int getY() const;
 
-	bool operator==(Piece other) const;
-private:
+	bool operator==(Piece& other) const;
+	virtual bool checkMove(Piece* board[8][8], Piece* source, Piece* destination) const = 0; // Pure virtual function
+
+protected:
 	int _row;
 	int _col;
 	char _type;

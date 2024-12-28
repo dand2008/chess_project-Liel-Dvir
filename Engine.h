@@ -15,7 +15,7 @@ public:
 	char* getCode(string move);
 	char getCurrPlayer() const;
 	void displayBoard() const;
-	bool checkPieceMove(Piece board[8][8], Piece source, Piece destination);
+	bool checkPieceMove(Piece* board[8][8], Piece* source, Piece* destination);
 private:
 	Board _board;
 	char _currentPlayer;
