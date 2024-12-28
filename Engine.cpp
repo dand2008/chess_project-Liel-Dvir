@@ -84,7 +84,7 @@ char* Engine::getCode(string move)
 	// Tests passed! Yay!!
 	else
 	{
-		Utils::movePiece(source, destination, _currentPlayer);
+		Utils::movePiece(_board.getBoard(), source, destination, _currentPlayer);
 		code[0] = '0';
 	}
 
