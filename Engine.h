@@ -15,6 +15,7 @@ public:
 	char* getCode(string move);
 	char getCurrPlayer() const;
 	void displayBoard() const;
+	void movePiece(string move);
 private:
 	Board _board;
 	char _currentPlayer;

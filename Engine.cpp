@@ -23,6 +23,15 @@ void Engine::displayBoard() const
 	_board.displayBoard();
 }
 
+void Engine::movePiece(string move)
+{
+	int* coords = Utils::fetchMove(move);
+	Piece& source = _board.getPiece(coords[1], coords[0]);
+	Piece& destination = _board.getPiece(coords[3], coords[2]);
+	Utils::movePiece(_board.getBoard(), source, destination, _currentPlayer);
+	delete[] coords;
+}
+
 char* Engine::getCode(string move)
 {
 	static char code[2] = { 0 };
@@ -84,7 +93,6 @@ char* Engine::getCode(string move)
 	// Tests passed! Yay!!
 	else
 	{
-		Utils::movePiece(_board.getBoard(), source, destination, _currentPlayer);
 		code[0] = '0';
 	}
 
