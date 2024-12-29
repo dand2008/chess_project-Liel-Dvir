@@ -10,10 +10,10 @@ bool Knight::checkMove(Piece* board[8][8], Piece* source, Piece* destination) co
 		(sourceX == destinationX + 1 && sourceY == destinationY - 2) ||
 		(sourceX == destinationX - 1 && sourceY == destinationY + 2) ||
 		(sourceX == destinationX - 1 && sourceY == destinationY - 2) ||
-		(sourceX == destinationX + 1 && sourceY == destinationY + 1) ||
-		(sourceX == destinationX + 1 && sourceY == destinationY - 1) ||
-		(sourceX == destinationX - 1 && sourceY == destinationY + 1) ||
-		(sourceX == destinationX - 1 && sourceY == destinationY - 1))
+		(sourceX == destinationX + 2 && sourceY == destinationY + 1) ||
+		(sourceX == destinationX + 2 && sourceY == destinationY - 1) ||
+		(sourceX == destinationX - 2 && sourceY == destinationY + 1) ||
+		(sourceX == destinationX - 2 && sourceY == destinationY - 1))
 	{
 		return true;
 	}
