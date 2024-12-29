@@ -33,3 +33,8 @@ bool Bishop::checkMove(Piece* board[8][8], Piece* source, Piece* destination) co
 
     return true;
 }
+
+Piece* Bishop::clone(Piece* destination) const
+{
+    return new Bishop(this->getType(), destination->getY(), destination->getX());
+}

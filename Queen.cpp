@@ -14,3 +14,8 @@ bool Queen::checkMove(Piece* board[8][8], Piece* source, Piece* destination) con
 	}
 	return false;
 }
+
+Piece* Queen::clone(Piece* destination) const
+{
+	return new Queen(this->getType(), destination->getY(), destination->getX());
+}

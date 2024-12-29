@@ -37,6 +37,11 @@ bool Pawn::checkMove(Piece* board[8][8], Piece* source, Piece* destination) cons
         board[destinationY][destinationX]->getColor() != source->getColor()) {
         return true;
     }
-
+    
     return false;
+}
+
+Piece* Pawn::clone(Piece* destination) const
+{
+    return new Pawn(this->getType(), destination->getY(), destination->getX());
 }

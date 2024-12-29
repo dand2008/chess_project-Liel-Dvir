@@ -33,3 +33,8 @@ bool Rook::checkMove(Piece* board[8][8], Piece* source, Piece* destination) cons
 		return false;
 	}
 }
+
+Piece* Rook::clone(Piece* destination) const
+{
+	return new Rook(this->getType(), destination->getY(), destination->getX());
+}

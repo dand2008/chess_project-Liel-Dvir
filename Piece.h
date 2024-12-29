@@ -13,7 +13,7 @@ public:
 	Piece();
 	Piece(char p, int row, int col);
 	virtual ~Piece() = default;
-	virtual void display() const;
+	void display() const;
 
 	char getType() const;
 	void setType(char type);
@@ -26,6 +26,7 @@ public:
 
 	bool operator==(Piece& other) const;
 	virtual bool checkMove(Piece* board[8][8], Piece* source, Piece* destination) const = 0; // Pure virtual function
+	virtual Piece* clone(Piece* destination) const = 0; // Pure virtual function
 
 protected:
 	int _row;
