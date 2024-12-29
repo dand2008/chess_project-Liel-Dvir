@@ -28,6 +28,7 @@ public:
 	}
 	static void movePiece(Piece* board[8][8], Piece& source, Piece& destination, char& currentPlayer)
 	{
+
 		Piece* p = source.clone(&destination);
 
 		board[destination.getY()][destination.getX()] = p;
