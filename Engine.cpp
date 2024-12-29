@@ -76,7 +76,7 @@ char* Engine::getCode(string move)
 	}
 
 	// After all source/destination checks, check if the piece can move like wanted
-	else if (!checkPieceMove(_board.getBoard(), &source, &destination))
+	else if (!source.checkMove(_board.getBoard(), &source, &destination))
 	{
 		code[0] = '6';
 	}
@@ -90,10 +90,4 @@ char* Engine::getCode(string move)
 
 	delete[] coords;
 	return code;
-}
-
-// Improved checkPieceMove function
-bool Engine::checkPieceMove(Piece* board[8][8], Piece* source, Piece* destination)
-{
-	return source->checkMove(board, source, destination);
 }
