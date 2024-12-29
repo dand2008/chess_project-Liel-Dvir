@@ -29,11 +29,17 @@ public:
 	static void movePiece(Piece* board[8][8], Piece& source, Piece& destination, char& currentPlayer)
 	{
 
+		std::cout << "src before: " << source.getType() << ", dst before: " << destination.getType();
 		Piece* p = source.clone(&destination);
 
 		board[destination.getY()][destination.getX()] = p;
 
 		board[source.getY()][source.getX()] = new nullPiece(EMPTY, source.getY(), source.getX());
+
+		destination.setColor(source.getColor());
+		source.setColor(EMPTY);
+		destination.setType(source.getType());
+		source.setType(EMPTY);
 
 		currentPlayer = currentPlayer == WHITE ? BLACK : WHITE;
 	}
