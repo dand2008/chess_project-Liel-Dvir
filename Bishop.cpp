@@ -31,7 +31,7 @@ bool Bishop::checkMove(Piece* board[8][8], Piece* source, Piece* destination) co
         currentY += stepY;
     }
 
-    return true;
+    return true; // All checks complete
 }
 
 Piece* Bishop::clone(Piece* destination) const

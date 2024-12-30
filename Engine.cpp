@@ -26,6 +26,8 @@ void Engine::displayBoard() const
 void Engine::movePiece(string move)
 {
 	int* coords = Utils::fetchMove(move);
+
+	// set source and destination according to coordinates
 	Piece& source = _board.getPiece(coords[1], coords[0]);
 	Piece& destination = _board.getPiece(coords[3], coords[2]);
 	Utils::movePiece(_board.getBoard(), source, destination);
@@ -48,6 +50,7 @@ char* Engine::getCode(string move)
 		return code;
 	}
 
+	// set source and destination according to coordinates
 	Piece& source = _board.getPiece(coords[1], coords[0]);
 	Piece& destination = _board.getPiece(coords[3], coords[2]);
 
