@@ -28,7 +28,8 @@ void Engine::movePiece(string move)
 	int* coords = Utils::fetchMove(move);
 	Piece& source = _board.getPiece(coords[1], coords[0]);
 	Piece& destination = _board.getPiece(coords[3], coords[2]);
-	Utils::movePiece(_board.getBoard(), source, destination, _currentPlayer);
+	Utils::movePiece(_board.getBoard(), source, destination);
+	_currentPlayer = _currentPlayer == WHITE ? BLACK : WHITE;
 	delete[] coords;
 }
 
@@ -36,7 +37,7 @@ char* Engine::getCode(string move)
 {
 	static char code[2] = { 0 };
 	int* coords = nullptr;
-	
+
 	// get source and destination from the string
 	try { coords = Utils::fetchMove(move); }
 	catch (const std::string& e)
@@ -68,7 +69,7 @@ char* Engine::getCode(string move)
 	}
 	// check if the source piece belongs to the current player
 	else if (!(_currentPlayer == WHITE && source.getColor() == WHITE) &&
-			 !(_currentPlayer == BLACK && source.getColor() == BLACK))
+		!(_currentPlayer == BLACK && source.getColor() == BLACK))
 	{
 		code[0] = '2';
 	}
@@ -79,7 +80,7 @@ char* Engine::getCode(string move)
 	}
 	// check if the piece lands on the any of the current player's pieces
 	else if ((_currentPlayer == WHITE && destination.getColor() == WHITE) ||
-			 (_currentPlayer == BLACK && destination.getColor() == BLACK))
+		(_currentPlayer == BLACK && destination.getColor() == BLACK))
 	{
 		code[0] = '3';
 	}
