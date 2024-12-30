@@ -25,15 +25,20 @@ public:
 	}
 	static void movePiece(Piece* board[8][8], Piece& source, Piece& destination)
 	{
-		Piece* p = source.clone(&destination);
+		// save coords
+		int sourceX = source.getX();
+		int sourceY = source.getY();
+		int destinationX = destination.getX();
+		int destinationY = destination.getY();
 
-		board[destination.getY()][destination.getX()] = p;
+		// Piece is gone
+		delete& destination;
 
-		board[source.getY()][source.getX()] = new nullPiece(EMPTY, source.getY(), source.getX());
+		// update destination
+		source.setPos(destinationY, destinationX);
+		board[destinationY][destinationX] = &source;
 
-		destination.setColor(source.getColor());
-		source.setColor(EMPTY);
-		destination.setType(source.getType());
-		source.setType(EMPTY);
+		// update source
+		board[sourceY][sourceX] = new nullPiece(EMPTY, sourceY, sourceX);
 	}
 };
