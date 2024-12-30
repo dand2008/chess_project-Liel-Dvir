@@ -23,6 +23,7 @@ public:
 
 	int getX() const;
 	int getY() const;
+	void setPos(int row, int col);
 
 	bool operator==(Piece& other) const;
 	virtual bool checkMove(Piece* board[8][8], Piece* source, Piece* destination) const = 0; // Pure virtual function

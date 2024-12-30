@@ -54,6 +54,12 @@ int Piece::getY() const
 	return _row;
 }
 
+void Piece::setPos(int row, int col)
+{
+	_row = row;
+	_col = col;
+}
+
 bool Piece::operator==(Piece& other) const
 {
 	return (_row == other._row && _col == other._col);
