@@ -42,7 +42,6 @@ char* Engine::getCode(string move)
 	try { coords = Utils::fetchMove(move); }
 	catch (const std::string& e)
 	{
-		std::cout << e;
 		code[0] = '5';
 		delete[] coords;
 		return code;

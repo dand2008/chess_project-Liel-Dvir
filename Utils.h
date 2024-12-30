@@ -35,10 +35,10 @@ public:
 		delete& destination;
 
 		// update destination
-		source.setPos(destinationY, destinationX);
+		source.setPos(destinationX, destinationY);
 		board[destinationY][destinationX] = &source;
 
 		// update source
-		board[sourceY][sourceX] = new nullPiece(EMPTY, sourceY, sourceX);
+		board[sourceY][sourceX] = new nullPiece(EMPTY, sourceX, sourceY);
 	}
 };

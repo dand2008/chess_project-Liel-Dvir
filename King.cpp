@@ -19,8 +19,3 @@ bool King::checkMove(Piece* board[8][8], Piece* source, Piece* destination) cons
 	}
 	return false;
 }
-
-Piece* King::clone(Piece* destination) const
-{
-	return new King(this->getType(), destination->getY(), destination->getX());
-}

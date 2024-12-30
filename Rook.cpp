@@ -2,39 +2,34 @@
 
 bool Rook::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
 {
-	int startX = std::min(source->getX(), destination->getX());
-	int endX = std::max(source->getX(), destination->getX());
-	int startY = std::min(source->getY(), destination->getY());
-	int endY = std::max(source->getY(), destination->getY());
-	if (source->getX() == destination->getX())
-	{
-		for (int y = startY + 1; y < endY; y++)
-		{
-			if (board[y][source->getX()]->getType() != EMPTY)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-	if (source->getY() == destination->getY())
-	{
-		for (int x = startX + 1; x < endX; x++)
-		{
-			if (board[source->getY()][x]->getType() != EMPTY)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-	else
+	int sourceX = source->getX();
+	int sourceY = source->getY();
+	int destinationX = destination->getX();
+	int destinationY = destination->getY();
+	
+	int dx = std::abs(destinationX - sourceX);
+	int dy = std::abs(destinationY - sourceY);
+
+	if (dx != 0 && dy != 0)
 	{
 		return false;
 	}
-}
 
-Piece* Rook::clone(Piece* destination) const
-{
-	return new Rook(this->getType(), destination->getY(), destination->getX());
+	int stepX = (destinationX == sourceX) ? 0 : (destinationX > sourceX) ? 1 : -1;
+	int stepY = (destinationY == sourceY) ? 0 : (destinationY > sourceY) ? 1 : -1;
+
+	int currentX = sourceX + stepX;
+	int currentY = sourceY + stepY;
+
+	while (currentX != destinationX || currentY != destinationY)
+	{
+		if (board[currentY][currentX]->getType() != EMPTY)
+		{
+			return false; // Path is blocked
+		}
+		currentX += stepX;
+		currentY += stepY;
+	}
+
+	return true;
 }

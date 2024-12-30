@@ -19,8 +19,3 @@ bool Knight::checkMove(Piece* board[8][8], Piece* source, Piece* destination) co
 	}
 	return false;
 }
-
-Piece* Knight::clone(Piece* destination) const
-{
-	return new Knight(this->getType(), destination->getY(), destination->getX());
-}
