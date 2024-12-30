@@ -3,23 +3,23 @@
 Board::Board(const char* board)
 {
     char* ptr = (char*)board;
-    for (int i = 0; i < 8; i++)
+    for (int y = 0; y < 8; y++)
     {
-        for (int j = 0; j < 8; j++)
+        for (int x = 0; x < 8; x++)
         {
             char pieceType = *ptr;
             Piece* p = nullptr;
             switch (tolower(pieceType))
             {
-            case 'b': p = new Bishop(pieceType, i, j); break;
-            case 'k': p = new King(pieceType, i, j); break;
-            case 'n': p = new Knight(pieceType, i, j); break;
-            case 'p': p = new Pawn(pieceType, i, j); break;
-            case 'q': p = new Queen(pieceType, i, j); break;
-            case 'r': p = new Rook(pieceType, i, j); break;
-            default: p = new nullPiece(pieceType, i, j); break; // Default to a generic piece if type is unknown
+            case 'b': p = new Bishop(pieceType, x, y); break;
+            case 'k': p = new King(pieceType, x, y); break;
+            case 'n': p = new Knight(pieceType, x, y); break;
+            case 'p': p = new Pawn(pieceType, x, y); break;
+            case 'q': p = new Queen(pieceType, x, y); break;
+            case 'r': p = new Rook(pieceType, x, y); break;
+            default: p = new nullPiece(pieceType, x, y); break; // Default to a generic piece if type is unknown
             }
-            _board[i][j] = p;
+            _board[y][x] = p;
             ptr++;
         }
     }
