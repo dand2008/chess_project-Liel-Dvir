@@ -8,9 +8,4 @@ class nullPiece : public Piece
 	{
 		return false;
 	}
-	Piece* clone(Piece* destination) const override
-	{
-
-		return new nullPiece(EMPTY, destination->getY(), destination->getX());
-	}
 };
