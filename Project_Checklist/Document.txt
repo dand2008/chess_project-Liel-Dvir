@@ -24,22 +24,22 @@ CHESS GAME PROJECT CHECKLIST
       [X] Implement `setPos(int, int)`
       [X] Implement `getX()`
       [X] Implement `getY()`
-      [ ] Implement `checkMove()` as a virtual method
+      [X] Implement `checkMove()` as a virtual method
       [X] Overload `operator==(Piece)`
 
    d. Derived Classes:
-      [ ] King Class:
-          [ ] Inherit from `Piece`
-          [ ] Implement `checkMove()` for King
+      [X] King Class:
+          [X] Inherit from `Piece`
+          [X] Implement `checkMove()` for King
       [X] Queen Class:
           [X] Inherit from `Piece`
           [X] Implement `checkMove()` for Queen
       [X] Bishop Class:
           [X] Inherit from `Piece`
           [X] Implement `checkMove()` for Bishop
-      [ ] Knight Class:
-          [ ] Inherit from `Piece`
-          [ ] Implement `checkMove()` for Knight
+      [X] Knight Class:
+          [X] Inherit from `Piece`
+          [X] Implement `checkMove()` for Knight
       [X] Rook Class:
           [X] Inherit from `Piece`
           [X] Implement `checkMove()` for Rook
@@ -56,7 +56,7 @@ CHESS GAME PROJECT CHECKLIST
 3. CORE GAME FEATURES
 ----------------------
       [X] Initialize the chess board with correct piece positions
-      [ ] Implement movement rules for each piece
+      [X] Implement movement rules for each piece
       [not done] Validate moves using `checkMove()`
       [ ] Detect check, checkmate, and stalemate conditions
       [X] Handle turns and player switching
