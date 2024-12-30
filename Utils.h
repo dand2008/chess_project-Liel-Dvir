@@ -8,25 +8,22 @@ class Utils
 public:
 	static int* fetchMove(string data)
 	{
-		if (data.length() == 4)
-		{
-			int* coords = new int[4];
-			int sourceX = data[0] - 'a';
-			int sourceY = 8 - (data[1] - '0');
-			int destinationX = data[2] - 'a';
-			int destinationY = 8 - (data[3] - '0');
-			coords[0] = sourceX;
-			coords[1] = sourceY;
-			coords[2] = destinationX;
-			coords[3] = destinationY;
-			return coords;
-		}
-		else
+		if (data.length() != 4)
 		{
 			throw std::string("ERROR: Invalid input!\n");
 		}
+		int* coords = new int[4];
+		int sourceX = data[0] - 'a';
+		int sourceY = 8 - (data[1] - '0');
+		int destinationX = data[2] - 'a';
+		int destinationY = 8 - (data[3] - '0');
+		coords[0] = sourceX;
+		coords[1] = sourceY;
+		coords[2] = destinationX;
+		coords[3] = destinationY;
+		return coords;
 	}
-	static void movePiece(Piece* board[8][8], Piece& source, Piece& destination, char& currentPlayer)
+	static void movePiece(Piece* board[8][8], Piece& source, Piece& destination)
 	{
 		Piece* p = source.clone(&destination);
 
@@ -38,7 +35,5 @@ public:
 		source.setColor(EMPTY);
 		destination.setType(source.getType());
 		source.setType(EMPTY);
-
-		currentPlayer = currentPlayer == WHITE ? BLACK : WHITE;
 	}
 };
