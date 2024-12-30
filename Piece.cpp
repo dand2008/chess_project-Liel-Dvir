@@ -1,14 +1,14 @@
 #include "Piece.h"
 
-Piece::Piece(char p, int row, int col)
-	: _row(row), _col(col)
+Piece::Piece(char p, int x, int y)
+	: _x(x), _y(y)
 {
 	_color = isupper(p) ? WHITE : (islower(p) ? BLACK : EMPTY);
 	_type = p;
 }
 
 Piece::Piece()
-	: _type(EMPTY), _color(EMPTY), _row(0), _col(0)
+	: _type(EMPTY), _color(EMPTY), _x(0), _y(0)
 {
 }
 
@@ -46,21 +46,21 @@ void Piece::setColor(char c)
 
 int Piece::getX() const
 {
-	return _col;
+	return _x;
 }
 
 int Piece::getY() const
 {
-	return _row;
+	return _y;
 }
 
-void Piece::setPos(int row, int col)
+void Piece::setPos(int newX, int newY)
 {
-	_row = row;
-	_col = col;
+	_y = newY;
+	_x = newX;
 }
 
 bool Piece::operator==(Piece& other) const
 {
-	return (_row == other._row && _col == other._col);
+	return (_x == other._x && _y == other._y);
 }

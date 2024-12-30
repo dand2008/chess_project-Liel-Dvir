@@ -23,15 +23,14 @@ public:
 
 	int getX() const;
 	int getY() const;
-	void setPos(int row, int col);
+	void setPos(int newX, int newY);
 
 	bool operator==(Piece& other) const;
 	virtual bool checkMove(Piece* board[8][8], Piece* source, Piece* destination) const = 0; // Pure virtual function
-	virtual Piece* clone(Piece* destination) const = 0; // Pure virtual function
 
 protected:
-	int _row;
-	int _col;
+	int _y;
+	int _x;
 	char _type;
 	char _color;
 };
