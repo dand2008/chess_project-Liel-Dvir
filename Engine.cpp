@@ -39,6 +39,7 @@ char* Engine::getCode(string move)
 {
 	static char code[2] = { 0 };
 	int* coords = nullptr;
+	bool isCheckingEnemy = true;
 
 	// get source and destination from the string
 	try { coords = Utils::fetchMove(move); }
@@ -53,14 +54,6 @@ char* Engine::getCode(string move)
 	Piece& source = _board.getPiece(coords[1], coords[0]);
 	Piece& destination = _board.getPiece(coords[3], coords[2]);
 
-	/* The move validity check order is as follows:
-	*  1. Check if move string is legit
-	*  2. Check if moved piece is the current player's piece
-	*  3. Check if source and destination pieces are the same
-	*  4. Check if destination piece is the current player's piece
-	*  5. Check if moved piece can move in this path
-	*/
-
 	// check input validity
 	if (move[0] < 'a' || move[0] > 'h' ||
 		move[1] < '1' || move[1] > '8' ||
@@ -69,17 +62,20 @@ char* Engine::getCode(string move)
 	{
 		code[0] = '5';
 	}
+
 	// check if the source piece belongs to the current player
 	else if (!(_currentPlayer == WHITE && source.getColor() == WHITE) &&
 		!(_currentPlayer == BLACK && source.getColor() == BLACK))
 	{
 		code[0] = '2';
 	}
+
 	// check if the destination is the same as the source
 	else if (source == destination)
 	{
 		code[0] = '7';
 	}
+
 	// check if the piece lands on the any of the current player's pieces
 	else if ((_currentPlayer == WHITE && destination.getColor() == WHITE) ||
 		(_currentPlayer == BLACK && destination.getColor() == BLACK))
@@ -87,14 +83,22 @@ char* Engine::getCode(string move)
 		code[0] = '3';
 	}
 
-	// After all source/destination checks, check if the piece can move like wanted
-	else if (!source.checkMove(_board.getBoard(), &source, &destination))
+	// After all source/destination checks, check if the piece can move legally like wanted
+	else if (!source.checkMove(_board.getBoard(), &destination))
 	{
 		code[0] = '6';
 	}
-	else if (Utils::checkCheck(_board.getBoard(), source, destination))
+
+	// Check if the player's move puts the enemy in check
+	else if (Utils::checkCheck(_board.getBoard(), source, destination, isCheckingEnemy))
 	{
 		code[0] = '1';
+	}
+
+	// Check if a move puts the player in check or doesn't get them out of check
+	else if (Utils::checkCheck(_board.getBoard(), source, destination, !isCheckingEnemy))
+	{
+		code[0] = '4';
 	}
 
 	// Tests passed! Yay!!

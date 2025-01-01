@@ -8,7 +8,7 @@ using std::string;
 
 void processMoveCode(char code);
 
-int main2()
+int main()
 {
 	char setup[66];
 	string input;
@@ -55,6 +55,9 @@ void processMoveCode(char code)
 		break;
 	case '3':
 		std::cout << "ERROR: Destination square cannot be your piece!\n";
+		break;
+	case '4':
+		std::cout << "ERROR: Invalid move: Move puts you in check!\n";
 		break;
 	case '5':
 		std::cout << "ERROR: Invalid input!\n";
