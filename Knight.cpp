@@ -1,10 +1,10 @@
 #include "Knight.h"
 
-bool Knight::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
+bool Knight::checkMove(Piece* board[8][8], Piece* destination) const
 {
 	// Get the current position of the source piece (Knight)
-	int sourceX = source->getX();
-	int sourceY = source->getY();
+	int sourceX = this->getX();
+	int sourceY = this->getY();
 
 	// Get the position of the destination
 	int destinationX = destination->getX();

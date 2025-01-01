@@ -8,7 +8,7 @@ using std::string;
 
 void processMoveCode(char code);
 
-int main()
+int main2()
 {
 	char setup[66];
 	string input;
@@ -26,7 +26,7 @@ int main()
 
 		char *code = e.getCode(input);
 
-		if (code[0] == '0')
+		if (code[0] == '0' || code[0] == '1')
 		{
 			e.movePiece(input);
 		}
@@ -47,6 +47,9 @@ void processMoveCode(char code)
 {
 	switch (code)
 	{
+	case '1':
+		std::cout << "Check!\n";
+		break;
 	case '2':
 		std::cout << "ERROR: Not your piece!\n";
 		break;

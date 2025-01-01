@@ -1,9 +1,9 @@
 #include "Rook.h"
 
-bool Rook::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
+bool Rook::checkMove(Piece* board[8][8], Piece* destination) const
 {
-	int sourceX = source->getX();
-	int sourceY = source->getY();
+	int sourceX = this->getX();
+	int sourceY = this->getY();
 	int destinationX = destination->getX();
 	int destinationY = destination->getY();
 	

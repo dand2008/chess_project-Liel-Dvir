@@ -5,14 +5,14 @@ using std::cout;
 using namespace std;
 
 // Function to check if the pawn's movement is valid
-bool Pawn::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
+bool Pawn::checkMove(Piece* board[8][8], Piece* destination) const
 {
-    int sourceX = source->getX();
-    int sourceY = source->getY();
+    int sourceX = this->getX();
+    int sourceY = this->getY();
     int destinationX = destination->getX();
     int destinationY = destination->getY();
     // Determine the pawn's movement direction
-    int direction = (source->getColor() == 'w') ? -1 : (source->getColor() == 'b') ? 1 : 0;
+    int direction = (this->getColor() == 'w') ? -1 : (this->getColor() == 'b') ? 1 : 0;
 
     // Calculate the difference in positions
     int dx = destinationX - sourceX;
@@ -34,7 +34,7 @@ bool Pawn::checkMove(Piece* board[8][8], Piece* source, Piece* destination) cons
     // Diagonal capture
     if ((dx == 1 || dx == -1) && dy == direction &&
         board[destinationY][destinationX]->getType() != EMPTY &&
-        board[destinationY][destinationX]->getColor() != source->getColor()) {
+        board[destinationY][destinationX]->getColor() != this->getColor()) {
         return true;
     }
     

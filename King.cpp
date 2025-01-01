@@ -1,10 +1,10 @@
 #include "King.h"
 
-bool King::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
+bool King::checkMove(Piece* board[8][8], Piece* destination) const
 {
 	// Get current position of the source piece (King)
-	int sourceX = source->getX();
-	int sourceY = source->getY();
+	int sourceX = this->getX();
+	int sourceY = this->getY();
 
 	// Get pos of destination
 	int destinationX = destination->getX();

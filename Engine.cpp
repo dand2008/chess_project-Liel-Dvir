@@ -92,6 +92,10 @@ char* Engine::getCode(string move)
 	{
 		code[0] = '6';
 	}
+	else if (Utils::checkCheck(_board.getBoard(), source, destination))
+	{
+		code[0] = '1';
+	}
 
 	// Tests passed! Yay!!
 	else

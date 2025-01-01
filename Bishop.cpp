@@ -1,9 +1,9 @@
 #include "Bishop.h"
 
-bool Bishop::checkMove(Piece* board[8][8], Piece* source, Piece* destination) const
+bool Bishop::checkMove(Piece* board[8][8], Piece* destination) const
 {
-    int sourceX = source->getX();
-    int sourceY = source->getY();
+    int sourceX = this->getX();
+    int sourceY = this->getY();
     int destinationX = destination->getX();
     int destinationY = destination->getY();
 

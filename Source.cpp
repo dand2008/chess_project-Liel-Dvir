@@ -1,9 +1,3 @@
-/*
-This file servers as an example of how to use Pipe.h file.
-It is recommended to use the following code in your project, 
-in order to read and write information from and to the Backend
-*/
-
 #include "Pipe.h"
 #include "Engine.h"
 #include <iostream>
@@ -12,7 +6,6 @@ in order to read and write information from and to the Backend
 using std::cout;
 using std::endl;
 using std::string;
-
 
 void main()
 {
@@ -35,19 +28,16 @@ void main()
 			Sleep(5000);
 			isConnect = p.connect();
 		}
-		else 
+		else
 		{
 			p.close();
 			return;
 		}
 	}
 	
-
 	char msgToGraphics[1024];
-	// msgToGraphics should contain the board string accord the protocol
-	// YOUR CODE
 
-	strcpy_s(msgToGraphics, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0"); // just example...
+	strcpy_s(msgToGraphics, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0");
 	
 	Engine e(msgToGraphics);
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string
@@ -57,14 +47,14 @@ void main()
 
 	while (msgFromGraphics != "quit")
 	{
-		// should handle the string the sent from graphics
-		// according the protocol. Ex: e2e4           (move e2 to e4)
-		
-		// YOUR CODE
 		char* code = e.getCode(msgFromGraphics);
 		strcpy_s(msgToGraphics, code);
 		
-		if (code[0] == '0')
+		if (code[0] == '1')
+		{
+			std::cout << "Check!\n";
+		}
+		if (code[0] == '0' || code[0] == '1')
 		{
 			e.movePiece(msgFromGraphics);
 		}

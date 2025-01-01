@@ -26,7 +26,7 @@ public:
 	void setPos(int newX, int newY);
 
 	bool operator==(Piece& other) const;
-	virtual bool checkMove(Piece* board[8][8], Piece* source, Piece* destination) const = 0; // Pure virtual function
+	virtual bool checkMove(Piece* board[8][8], Piece* destination) const = 0; // Pure virtual function
 
 protected:
 	int _y;
