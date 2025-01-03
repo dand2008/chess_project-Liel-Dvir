@@ -16,37 +16,33 @@ int main()
 	strcpy_s(setup, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0");
 	Engine e(setup);
 
-	std::cout << "\n" << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " to move." << std::endl;
-	std::cout << "Enter move (e.g. e2e4): ";
-	std::cin >> input;
+	char* code = nullptr;
 
-	while (input != "quit")
+	do
 	{
+		std::cout << "\n" << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " to move." << std::endl;
+		std::cout << "Enter move (e.g. e2e4): ";
+		std::cin >> input;
+
 		system("cls");
 
-		char *code = e.getCode(input);
+		code = e.getCode(input);
 
 		if (code[0] == '0' || code[0] == '1' || code[0] == '8')
 		{
 			e.movePiece(input);
 		}
+
 		e.displayBoard();
 
 		processMoveCode(code[0]);
 
-		if (code[0] == '8')
-		{
-			std::cout << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " wins!";
-			break;
-		}
-
 		// Switch current player
 		e.setCurrPlayer(e.getCurrPlayer() == WHITE ? BLACK : WHITE);
 
-		std::cout << "\n" << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " to move." << std::endl;
-		std::cout << "Enter move (e.g. e2e4): ";
-		std::cin >> input;
-	}
+	} while (input != "q" || code[0] == '8');
+
+	std::cout << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " wins!";
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	return 0;
