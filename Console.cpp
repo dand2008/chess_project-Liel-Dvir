@@ -16,7 +16,7 @@ int main()
 	strcpy_s(setup, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0");
 	Engine e(setup);
 
-	std::cout << "\n" << (e.getCurrPlayer() == 'w' ? "White" : "Black") << " to move." << std::endl;
+	std::cout << "\n" << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " to move." << std::endl;
 	std::cout << "Enter move (e.g. e2e4): ";
 	std::cin >> input;
 
@@ -34,7 +34,16 @@ int main()
 
 		processMoveCode(code[0]);
 
-		std::cout << "\n" << (e.getCurrPlayer() == 'w' ? "White" : "Black") << " to move." << std::endl;
+		if (code[0] == '8')
+		{
+			std::cout << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " wins!";
+			break;
+		}
+
+		// Switch current player
+		e.setCurrPlayer(e.getCurrPlayer() == WHITE ? BLACK : WHITE);
+
+		std::cout << "\n" << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " to move." << std::endl;
 		std::cout << "Enter move (e.g. e2e4): ";
 		std::cin >> input;
 	}
