@@ -18,6 +18,11 @@ bool Pawn::checkMove(Piece* board[8][8], Piece* destination) const
     int dx = destinationX - sourceX;
     int dy = destinationY - sourceY;
 
+    if (this->getColor() == destination->getColor())
+    {
+        return false;
+    }
+
     // Forward move (1 step)
     if (dx == 0 && dy == direction && board[destinationY][destinationX]->getType() == EMPTY) {
         return true;

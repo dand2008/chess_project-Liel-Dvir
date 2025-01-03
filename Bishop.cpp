@@ -14,6 +14,10 @@ bool Bishop::checkMove(Piece* board[8][8], Piece* destination) const
     if (dx != dy) {
         return false;
     }
+    if (this->getColor() == destination->getColor())
+    {
+        return false;
+    }
 
     // Determine the direction of movement
     int stepX = (destinationX > sourceX) ? 1 : -1;

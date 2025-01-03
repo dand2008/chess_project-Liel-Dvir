@@ -10,6 +10,11 @@ bool King::checkMove(Piece* board[8][8], Piece* destination) const
 	int destinationX = destination->getX();
 	int destinationY = destination->getY();
 
+	if (this->getColor() == destination->getColor())
+	{
+		return false;
+	}
+
 	// The King can move one square in any direction (horizontal, vertical, or diagonal)
 	if ((sourceX == destinationX + 1 && sourceY == destinationY) ||
 		(sourceX == destinationX - 1 && sourceY == destinationY) ||

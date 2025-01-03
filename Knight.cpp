@@ -10,6 +10,11 @@ bool Knight::checkMove(Piece* board[8][8], Piece* destination) const
 	int destinationX = destination->getX();
 	int destinationY = destination->getY();
 
+	if (this->getColor() == destination->getColor())
+	{
+		return false;
+	}
+
 
 	// Check if move matches the "L-shape" pattern of a Knight's movement
    // A Knight moves two squares in one direction and one square perpendicular to it.

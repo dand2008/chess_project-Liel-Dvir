@@ -14,6 +14,10 @@ bool Rook::checkMove(Piece* board[8][8], Piece* destination) const
 	{
 		return false;
 	}
+	if (this->getColor() == destination->getColor())
+	{
+		return false;
+	}
 
 	int stepX = (destinationX == sourceX) ? 0 : (destinationX > sourceX) ? 1 : -1;
 	int stepY = (destinationY == sourceY) ? 0 : (destinationY > sourceY) ? 1 : -1;
