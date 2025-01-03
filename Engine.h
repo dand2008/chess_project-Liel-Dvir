@@ -14,6 +14,7 @@ public:
 	//~Engine();
 	char* getCode(string move);
 	char getCurrPlayer() const;
+	void setCurrPlayer(char player);
 	void displayBoard() const;
 	void movePiece(string move);
 private:
