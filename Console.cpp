@@ -40,9 +40,9 @@ int main()
 		// Switch current player
 		e.setCurrPlayer(e.getCurrPlayer() == WHITE ? BLACK : WHITE);
 
-	} while (input != "q" || code[0] == '8');
+	} while (input != "q" && code[0] != '8');
 
-	std::cout << (e.getCurrPlayer() == WHITE ? "White" : "Black") << " wins!";
+	std::cout << (e.getCurrPlayer() == WHITE ? "Black" : "White") << " wins!";
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	return 0;
