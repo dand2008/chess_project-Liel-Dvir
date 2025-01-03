@@ -18,6 +18,11 @@ char Engine::getCurrPlayer() const
 	return _currentPlayer;
 }
 
+void Engine::setCurrPlayer(char player)
+{
+	_currentPlayer = player;
+}
+
 void Engine::displayBoard() const
 {
 	_board.displayBoard();
@@ -31,7 +36,6 @@ void Engine::movePiece(string move)
 	Piece& source = _board.getPiece(coords[1], coords[0]);
 	Piece& destination = _board.getPiece(coords[3], coords[2]);
 	Utils::movePiece(_board.getBoard(), source, destination);
-	_currentPlayer = _currentPlayer == WHITE ? BLACK : WHITE;
 	delete[] coords;
 }
 
@@ -43,7 +47,7 @@ char* Engine::getCode(string move)
 
 	// get source and destination from the string
 	try { coords = Utils::fetchMove(move); }
-	catch (const std::string& e)
+	catch (const std::string&)
 	{
 		code[0] = '5';
 		delete[] coords;
