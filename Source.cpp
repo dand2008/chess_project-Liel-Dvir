@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-void main()
+void main2()
 {
 	srand(time_t(NULL));
 
@@ -54,7 +54,7 @@ void main()
 		{
 			std::cout << "Check!\n";
 		}
-		if (code[0] == '0' || code[0] == '1')
+		if (code[0] == '0' || code[0] == '1' || code[0] == '8')
 		{
 			e.movePiece(msgFromGraphics);
 		}

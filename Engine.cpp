@@ -89,17 +89,24 @@ char* Engine::getCode(string move)
 		code[0] = '6';
 	}
 
+	// Check if the player's move puts the enemy in checkmate
+	else if (Utils::isCheckmate(_board.getBoard(), source, destination))
+	{
+		code[0] = '8';
+	}
+
 	// Check if the player's move puts the enemy in check
-	else if (Utils::checkCheck(_board.getBoard(), source, destination, isCheckingEnemy))
+	else if (Utils::isCheck(_board.getBoard(), source, destination, isCheckingEnemy))
 	{
 		code[0] = '1';
 	}
 
 	// Check if a move puts the player in check or doesn't get them out of check
-	else if (Utils::checkCheck(_board.getBoard(), source, destination, !isCheckingEnemy))
+	else if (Utils::isCheck(_board.getBoard(), source, destination, !isCheckingEnemy))
 	{
 		code[0] = '4';
 	}
+
 
 	// Tests passed! Yay!!
 	else

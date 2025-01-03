@@ -26,7 +26,7 @@ int main()
 
 		char *code = e.getCode(input);
 
-		if (code[0] == '0' || code[0] == '1')
+		if (code[0] == '0' || code[0] == '1' || code[0] == '8')
 		{
 			e.movePiece(input);
 		}
@@ -68,5 +68,7 @@ void processMoveCode(char code)
 	case '7':
 		std::cout << "ERROR: Source and Destination squares are the same!\n";
 		break;
+	case '8':
+		std::cout << "CHECKMATE!\n";
 	}
 }
