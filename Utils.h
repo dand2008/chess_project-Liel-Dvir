@@ -122,6 +122,7 @@ public:
 					{
 						// Revert changes before returning
 						source.setPos(originalX, originalY);
+						delete board[source.getY()][source.getX()];
 						board[source.getY()][source.getX()] = &source;
 						board[destination.getY()][destination.getX()] = originalPiece;
 						return true;
@@ -132,6 +133,7 @@ public:
 
 		// Revert changes after no check is found
 		source.setPos(originalX, originalY);
+		delete board[source.getY()][source.getX()];
 		board[source.getY()][source.getX()] = &source;
 		board[destination.getY()][destination.getX()] = originalPiece;
 		return false;
@@ -182,6 +184,7 @@ public:
 
 								if (!stillInCheck) {
 									source.setPos(originalX, originalY);
+									delete board[source.getY()][source.getX()];
 									board[source.getY()][source.getX()] = &source;
 									board[destination.getY()][destination.getX()] = originalPiece;
 									return false; // The enemy can escape check, so no checkmate
@@ -194,6 +197,7 @@ public:
 		}
 		// Step 4: If no valid moves escape check, it's a checkmate
 		source.setPos(originalX, originalY);
+		delete board[source.getY()][source.getX()];
 		board[source.getY()][source.getX()] = &source;
 		board[destination.getY()][destination.getX()] = originalPiece;
 		return true;
