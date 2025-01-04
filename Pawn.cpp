@@ -12,7 +12,7 @@ bool Pawn::checkMove(Piece* board[8][8], Piece* destination) const
     int destinationX = destination->getX();
     int destinationY = destination->getY();
     // Determine the pawn's movement direction
-    int direction = (this->getColor() == 'w') ? -1 : (this->getColor() == 'b') ? 1 : 0;
+    int direction = (this->getColor() == WHITE) ? -1 : (this->getColor() == BLACK) ? 1 : 0;
 
     // Calculate the difference in positions
     int dx = destinationX - sourceX;
@@ -22,6 +22,11 @@ bool Pawn::checkMove(Piece* board[8][8], Piece* destination) const
     {
         return false;
     }
+
+	if (this->getX() == destination->getX() && this->getY() == destination->getY())
+	{
+		return false;
+	}
 
     // Forward move (1 step)
     if (dx == 0 && dy == direction && board[destinationY][destinationX]->getType() == EMPTY) {
