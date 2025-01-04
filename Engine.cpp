@@ -57,6 +57,7 @@ char* Engine::getCode(string move)
 	// set source and destination according to coordinates
 	Piece& source = _board.getPiece(coords[1], coords[0]);
 	Piece& destination = _board.getPiece(coords[3], coords[2]);
+	delete[] coords;
 
 	// check input validity
 	if (move[0] < 'a' || move[0] > 'h' ||
@@ -117,6 +118,5 @@ char* Engine::getCode(string move)
 		code[0] = VALID_MOVE;
 	}
 
-	delete[] coords;
 	return code;
 }

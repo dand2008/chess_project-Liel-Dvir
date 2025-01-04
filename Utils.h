@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Piece.h"
+#include "nullPiece.h"
 using std::string;
 
 class Utils
@@ -174,7 +175,7 @@ public:
 				if (currentPiece->getColor() == enemyColor) {
 					// Iterate through all possible moves for the enemy piece
 					for (int dy = 0; dy < 8; dy++) {
-						for (int dx = 1; dx < 8; dx++) {
+						for (int dx = 0; dx < 8; dx++) {
 							if (currentPiece->checkMove(board, board[dy][dx])) {
 								// Temporarily move the piece
 								Piece* tempOriginalPiece = board[dy][dx];
