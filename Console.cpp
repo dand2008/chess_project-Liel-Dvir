@@ -8,18 +8,6 @@ using std::string;
 
 void processMoveCode(char code);
 
-enum MoveCode {
-	VALID_MOVE = '0',
-	CHECK = '1',
-	NOT_PLAYER_PIECE = '2',
-	DESTINATION_IS_OWN_PIECE = '3',
-	MOVE_PUTS_IN_CHECK = '4',
-	INVALID_INPUT = '5',
-	ILLEGAL_MOVE = '6',
-	SOURCE_DESTINATION_SAME = '7',
-	CHECKMATE = '8'
-};
-
 int main()
 {
 	char setup[66];
