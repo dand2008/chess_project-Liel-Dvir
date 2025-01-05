@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-void main2()
+void main()
 {
 	srand(time_t(NULL));
 
@@ -50,16 +50,13 @@ void main2()
 		char* code = e.getCode(msgFromGraphics);
 		strcpy_s(msgToGraphics, code);
 		
-		if (code[0] == '1')
-		{
-			std::cout << "Check!\n";
-		}
 		if (code[0] == '0' || code[0] == '1' || code[0] == '8')
 		{
 			e.movePiece(msgFromGraphics);
+			e.setCurrPlayer(e.getCurrPlayer() == WHITE ? BLACK : WHITE);
 		}
 		// return result to graphics
-		p.sendMessageToGraphics(msgToGraphics);   
+		p.sendMessageToGraphics(msgToGraphics);
 
 		// get message from graphics
 		msgFromGraphics = p.getMessageFromGraphics();
