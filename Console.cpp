@@ -13,7 +13,7 @@ int main()
 	char setup[66];
 	string input;
 
-	strcpy_s(setup, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0");
+	strcpy_s(setup, "rnb#kbnrpppppppp################################PPPPPPPPR###KBNR0");
 	Engine e(setup);
 
 	char* code = nullptr;
@@ -24,7 +24,7 @@ int main()
 		std::cout << "Enter move (e.g. e2e4): ";
 		std::cin >> input;
 
-		system("cls");
+		//system("cls");
 
 		code = e.getCode(input);
 

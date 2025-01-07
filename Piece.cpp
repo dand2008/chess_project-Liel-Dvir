@@ -1,14 +1,14 @@
 #include "Piece.h"
 
 Piece::Piece(char p, int x, int y)
-	: _x(x), _y(y)
+	: _x(x), _y(y), _hasMoved(false)
 {
 	_color = isupper(p) ? WHITE : (islower(p) ? BLACK : EMPTY);
 	_type = p;
 }
 
 Piece::Piece()
-	: _type(EMPTY), _color(EMPTY), _x(0), _y(0)
+	: _type(EMPTY), _color(EMPTY), _x(0), _y(0), _hasMoved(false)
 {
 }
 
@@ -58,6 +58,7 @@ void Piece::setPos(int newX, int newY)
 {
 	_y = newY;
 	_x = newX;
+	_hasMoved = true;
 }
 
 bool Piece::operator==(Piece& other) const
