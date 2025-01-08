@@ -28,9 +28,12 @@ public:
 	bool operator==(Piece& other) const;
 	virtual bool checkMove(Piece* board[8][8], Piece* destination) const = 0; // Pure virtual function
 
+	bool hasMoved() const;
+
 protected:
 	int _y;
 	int _x;
 	char _type;
 	char _color;
+	bool _hasMoved;
 };
