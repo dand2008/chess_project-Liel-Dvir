@@ -13,7 +13,7 @@ int main()
 	char setup[66];
 	string input;
 
-	strcpy_s(setup, "rnb#kbnrpppppppp################################PPPPPPPPR###KBNR0");
+	strcpy_s(setup, "rnbqkbnrpppppppp################################PPPPPPPPRNBQKBNR0");
 	Engine e(setup);
 
 	char* code = nullptr;
