@@ -70,4 +70,3 @@ bool Piece::hasMoved() const
 {
 	return _hasMoved;
 }
-

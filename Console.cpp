@@ -24,7 +24,7 @@ int main()
 		std::cout << "Enter move (e.g. e2e4): ";
 		std::cin >> input;
 
-		system("cls");
+		//system("cls");
 
 		code = e.getCode(input);
 
