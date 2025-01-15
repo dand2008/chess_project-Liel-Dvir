@@ -2,14 +2,18 @@
 #include "Engine.h"
 #include <iostream>
 #include <thread>
+#include <windows.h>
 
 using std::cout;
 using std::endl;
 using std::string;
 
-void main()
+void main2()
 {
 	srand(time_t(NULL));
+
+	system("start chessGraphics.exe");
+	Sleep(600);
 
 	
 	Pipe p;
